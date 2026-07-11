@@ -1,0 +1,6 @@
+[
+  {"log_id":"L001","service_name":"ingestion-api","event_ts":"2026-05-10T06:00:00Z","status":"ok","runtime_seconds":58},
+  {"log_id":"L002","service_name":"schema-registry","event_ts":"2026-05-10T06:03:00Z","status":"warning","runtime_seconds":19},
+  {"log_id":"L003","service_name":"dbt-transform","event_ts":"2026-05-10T06:15:00Z","status":"ok","runtime_seconds":188},
+  {"log_id":"L004","service_name":"quality-service","event_ts":"2026-05-10T06:19:00Z","status":"failed","runtime_seconds":71}
+]

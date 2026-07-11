@@ -1,0 +1,56 @@
+metrics:
+  - name: gross_revenue
+    label: Gross Revenue
+    type: sum
+    dataset: gold_revenue_analytics
+    expression: gross_revenue
+    owner: finance-analytics
+    description: Completed order revenue before refunds and adjustments.
+
+  - name: completed_orders
+    label: Completed Orders
+    type: sum
+    dataset: gold_revenue_analytics
+    expression: completed_orders
+    owner: finance-analytics
+    description: Count of completed ecommerce orders.
+
+  - name: revenue_attainment
+    label: Revenue Attainment
+    type: ratio
+    dataset: gold_revenue_analytics
+    numerator: gross_revenue
+    denominator: revenue_target
+    owner: finance-analytics
+    description: Actual revenue divided by planned revenue target.
+
+  - name: roas
+    label: Return on Ad Spend
+    type: ratio
+    dataset: gold_marketing_attribution
+    numerator: attributed_revenue
+    denominator: spend
+    owner: growth-analytics
+    description: Attributed revenue divided by marketing spend.
+
+  - name: dataset_readiness_score
+    label: Dataset Readiness Score
+    type: average
+    dataset: observability.dataset_readiness
+    expression: readiness_score
+    owner: data-platform
+    description: Composite score across row availability, quality, freshness, and schema status.
+
+dimensions:
+  - name: order_date
+    dataset: gold_revenue_analytics
+    type: date
+  - name: channel
+    dataset: gold_marketing_attribution
+    type: string
+  - name: category
+    dataset: gold_product_performance
+    type: string
+  - name: criticality_tier
+    dataset: metadata.data_catalog
+    type: string

@@ -1,0 +1,5 @@
+campaign_id,campaign_date,channel,spend,impressions,clicks
+CMP-001,2026-05-10,paid_search,950.00,18000,950
+CMP-002,2026-05-10,paid_social,1250.00,42000,1600
+CMP-003,2026-05-10,email,150.00,12000,870
+CMP-004,2026-05-10,affiliate,725.00,9000,440

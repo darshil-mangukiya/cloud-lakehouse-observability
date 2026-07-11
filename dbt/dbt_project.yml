@@ -1,0 +1,30 @@
+name: data_lakehouse_platform
+version: "1.0.0"
+config-version: 2
+
+profile: data_lakehouse_platform
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  data_lakehouse_platform:
+    staging:
+      +schema: silver
+      +materialized: view
+      +tags: ["staging", "silver"]
+    intermediate:
+      +schema: silver
+      +materialized: view
+      +tags: ["intermediate", "business-logic"]
+    marts:
+      +schema: gold
+      +materialized: table
+      +tags: ["gold", "analytics-ready"]

@@ -1,0 +1,10 @@
+{
+  "expectation_suite_name": "silver_ecommerce_transactions",
+  "expectations": [
+    {"expectation_type": "expect_column_values_to_not_be_null", "kwargs": {"column": "transaction_id"}},
+    {"expectation_type": "expect_column_values_to_be_unique", "kwargs": {"column": "transaction_id"}},
+    {"expectation_type": "expect_column_values_to_not_be_null", "kwargs": {"column": "customer_id", "mostly": 0.99}},
+    {"expectation_type": "expect_column_values_to_be_between", "kwargs": {"column": "amount", "min_value": 0}},
+    {"expectation_type": "expect_column_values_to_be_in_set", "kwargs": {"column": "status", "value_set": ["completed", "refunded", "failed", "pending"]}}
+  ]
+}

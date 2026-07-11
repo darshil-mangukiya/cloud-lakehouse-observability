@@ -1,0 +1,8 @@
+dataset_name,criticality_tier,owner,sla_hours
+gold_customer_analytics,tier_1,analytics-engineering,24
+gold_revenue_analytics,tier_1,finance-analytics,24
+gold_marketing_attribution,tier_2,growth-analytics,24
+gold_product_performance,tier_2,merchandising-analytics,24
+gold_operational_metrics,tier_1,data-platform,1
+gold_data_quality_summary,tier_1,data-governance,1
+gold_source_freshness,tier_1,data-platform,1

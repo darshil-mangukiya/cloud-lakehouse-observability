@@ -1,0 +1,15 @@
+{
+  "exceptions": [
+    {
+      "exception_id": "EX-PLATFORM-001",
+      "status": "active",
+      "owner": "data-governance",
+      "approved_by": "director-data-platform",
+      "gate_name": "high_alert_gate",
+      "dataset_name": "*",
+      "reason": "High-severity rejected record alerts may be published with warning when critical revenue/customer marts reconcile and certification owners acknowledge.",
+      "expires_at": "2026-12-31T23:59:59+00:00",
+      "control": "Must appear in release report and remediation plan until resolved."
+    }
+  ]
+}

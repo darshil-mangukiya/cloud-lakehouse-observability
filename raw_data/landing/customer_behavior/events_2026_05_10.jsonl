@@ -1,0 +1,4 @@
+{"event_id":"E9001","user_id":"C001","event_time":"2026-05-10T07:01:00Z","event_type":"product_view","product_id":"P100","session_id":"S-101"}
+{"event_id":"E9002","user_id":"C002","event_time":"2026-05-10T07:04:00Z","event_type":"cart_add","product_id":"P100","session_id":"S-102"}
+{"event_id":"E9003","user_id":"C004","event_time":"2026-05-10T08:01:00Z","event_type":"checkout_start","product_id":"P400","session_id":"S-103"}
+{"event_id":"E9004","user_id":"C005","event_time":"2026-05-10T09:12:00Z","event_type":"product_view","product_id":"P500","session_id":"S-104"}

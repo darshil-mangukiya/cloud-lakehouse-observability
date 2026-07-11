@@ -1,0 +1,3 @@
+completed_orders,failed_orders,gross_revenue,order_date,orders_target,refund_count,revenue_attainment,revenue_target
+2,1,189.49,2026-05-09,5,1,0.379,500.0
+3,0,778.49,2026-05-10,7,0,0.865,900.0

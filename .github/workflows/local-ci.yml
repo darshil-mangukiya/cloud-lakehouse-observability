@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Compile, pipeline, exports, tests, audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Compile checks
+        run: python -B -m py_compile scripts/export_for_powerbi.py tests/test_export_for_powerbi.py
+
+      - name: Run platform pipeline
+        run: python pipelines/run_platform.py --reset
+
+      - name: Generate Power BI exports
+        run: python scripts/export_for_powerbi.py
+
+      - name: Power BI export tests
+        run: python -m unittest tests/test_export_for_powerbi.py
+
+      - name: Full unit test suite
+        run: python -m unittest discover tests
+
+      - name: Platform audit
+        run: python scripts/platform_audit.py
+
+      # Whitespace / conflict-marker check on source and docs only. We
+      # intentionally do NOT run `git diff --exit-code`: the export regenerates
+      # sample CSVs and an export_manifest.json whose timestamp changes on every
+      # run, which is expected and must not fail CI. The generated exports are
+      # excluded because the csv module writes CRLF line endings, which git
+      # reports as trailing whitespace on regenerated data files.
+      - name: Whitespace and conflict-marker check
+        run: git diff --check -- . ':(exclude)powerbi/sample_exports'

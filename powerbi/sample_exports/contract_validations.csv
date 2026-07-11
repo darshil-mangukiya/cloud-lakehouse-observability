@@ -1,0 +1,9 @@
+source_system,dataset_name,report_file,status,violation_count,owner,criticality_tier,observed_at,validated_at
+crm_support,support_tickets,support_2026_05_10_contract_report.json,PASS,0,support-operations,tier_2,2026-07-12T16:54:37.398321+00:00,2026-07-12T16:54:37.398647+00:00
+customer_behavior,behavior_events,events_2026_05_10_contract_report.json,PASS,0,product-analytics,tier_2,2026-07-12T16:54:37.390475+00:00,2026-07-12T16:54:37.390782+00:00
+ecommerce_transactions,orders,orders_2026_05_09_contract_report.json,QUARANTINE,1,data-platform,tier_1,2026-07-12T16:54:37.384945+00:00,2026-07-12T16:54:37.385511+00:00
+ecommerce_transactions,orders,orders_2026_05_10_schema_v2_contract_report.json,QUARANTINE,1,data-platform,tier_1,2026-07-12T16:54:37.387061+00:00,2026-07-12T16:54:37.387494+00:00
+marketing_campaigns,campaign_spend,campaigns_2026_05_10_contract_report.json,FAIL,1,growth-analytics,tier_2,2026-07-12T16:54:37.388842+00:00,2026-07-12T16:54:37.389146+00:00
+operational_logs,pipeline_service_logs,pipeline_logs_2026_05_10_contract_report.json,PASS,0,data-platform,tier_1,2026-07-12T16:54:37.394602+00:00,2026-07-12T16:54:37.394895+00:00
+product_catalog,products,products_2026_05_10_contract_report.json,PASS,0,merchandising-analytics,tier_2,2026-07-12T16:54:37.392258+00:00,2026-07-12T16:54:37.392844+00:00
+targets_planning,revenue_targets,revenue_targets_2026_05_contract_report.json,FAIL,1,finance-analytics,tier_1,2026-07-12T16:54:37.396428+00:00,2026-07-12T16:54:37.396621+00:00

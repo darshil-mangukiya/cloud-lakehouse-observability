@@ -1,0 +1,53 @@
+version: 2
+
+sources:
+  - name: raw
+    database: "{{ env_var('POSTGRES_DB', 'lakehouse') }}"
+    schema: raw
+    tables:
+      - name: ecommerce_transactions
+        description: Raw ecommerce order extracts with intentionally evolving schemas.
+        loaded_at_field: _ingested_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+      - name: marketing_campaigns
+        description: Paid and owned campaign performance extracts.
+        loaded_at_field: _ingested_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+      - name: customer_behavior
+        description: Event stream of product, cart, and checkout behavior.
+        loaded_at_field: _ingested_at
+        freshness:
+          warn_after: {count: 6, period: hour}
+          error_after: {count: 12, period: hour}
+      - name: product_catalog
+        description: Product reference data with active status and category attributes.
+        loaded_at_field: _ingested_at
+        freshness:
+          warn_after: {count: 48, period: hour}
+          error_after: {count: 72, period: hour}
+      - name: operational_logs
+        description: Platform service runtime and health events.
+        loaded_at_field: _ingested_at
+        freshness:
+          warn_after: {count: 1, period: hour}
+          error_after: {count: 2, period: hour}
+      - name: targets_planning
+        description: Finance and revenue operations plan targets.
+        loaded_at_field: _ingested_at
+        freshness:
+          warn_after: {count: 168, period: hour}
+          error_after: {count: 336, period: hour}
+      - name: crm_support
+        description: Support and customer operations ticket feed.
+        loaded_at_field: _ingested_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+      - name: data_quality_summary
+        description: Quality validation summaries emitted by the validation service.
+      - name: load_log
+        description: Load metadata published by ingestion and transformation jobs.

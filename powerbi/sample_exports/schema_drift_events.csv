@@ -1,0 +1,9 @@
+source_system,previous_version,current_version,status,breaking,added_columns,removed_columns,type_changes,safe_renames,detected_at
+ecommerce_transactions,,1,new_schema,False,amount;campaign_id;customer_id;order_ts;product_id;quantity;status;transaction_id,,{},{},2026-07-12T16:54:37.386060+00:00
+ecommerce_transactions,1,2,compatible_evolution,False,coupon_code,,{},"{""order_id"": ""transaction_id"", ""order_timestamp"": ""order_ts"", ""order_value"": ""amount""}",2026-07-12T16:54:37.387943+00:00
+marketing_campaigns,,1,new_schema,False,campaign_date;campaign_id;channel;clicks;impressions;spend,,{},{},2026-07-12T16:54:37.389500+00:00
+customer_behavior,,1,new_schema,False,event_id;event_time;event_type;product_id;session_id;user_id,,{},{},2026-07-12T16:54:37.391110+00:00
+product_catalog,,1,new_schema,False,active_flag;category;list_price;product_id;product_name,,{},{},2026-07-12T16:54:37.393261+00:00
+operational_logs,,1,new_schema,False,event_ts;log_id;runtime_seconds;service_name;status,,{},{},2026-07-12T16:54:37.395216+00:00
+targets_planning,,1,new_schema,False,orders_target;revenue_target;target_date,,{},{},2026-07-12T16:54:37.397006+00:00
+crm_support,,1,new_schema,False,created_ts;priority;status;ticket_id;topic;user_id,,{},{},2026-07-12T16:54:37.399025+00:00

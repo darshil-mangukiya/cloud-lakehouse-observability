@@ -1,0 +1,9 @@
+dataset_name,evaluated_at,row_count,quality_status,freshness_status,schema_status,readiness_score,readiness_status,comp_has_rows,comp_quality,comp_freshness,comp_schema
+gold_customer_analytics,2026-07-12T16:54:37.461323+00:00,5,passed,passed,compatible_evolution,1.0,ready,1.0,1.0,1.0,1.0
+gold_revenue_analytics,2026-07-12T16:54:37.461572+00:00,2,passed,passed,compatible_evolution,1.0,ready,1.0,1.0,1.0,1.0
+gold_marketing_attribution,2026-07-12T16:54:37.461853+00:00,4,passed,passed,compatible_evolution,1.0,ready,1.0,1.0,1.0,1.0
+gold_product_performance,2026-07-12T16:54:37.462207+00:00,5,passed,passed,compatible_evolution,1.0,ready,1.0,1.0,1.0,1.0
+gold_operational_metrics,2026-07-12T16:54:37.462496+00:00,4,passed,passed,compatible_evolution,1.0,ready,1.0,1.0,1.0,1.0
+gold_target_vs_actual,2026-07-12T16:54:37.462753+00:00,2,passed,passed,compatible_evolution,1.0,ready,1.0,1.0,1.0,1.0
+gold_data_quality_summary,2026-07-12T16:54:37.463056+00:00,7,failed,passed,compatible_evolution,0.75,at_risk,1.0,0.0,1.0,1.0
+gold_source_freshness,2026-07-12T16:54:37.463564+00:00,15,passed,passed,compatible_evolution,1.0,ready,1.0,1.0,1.0,1.0

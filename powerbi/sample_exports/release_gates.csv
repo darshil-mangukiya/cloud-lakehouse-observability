@@ -1,0 +1,13 @@
+evaluated_at,release_status,publish_decision,gate_name,status,severity,observed,expected,recommended_action
+2026-07-12T16:54:37.507662+00:00,blocked,do_not_publish,silver_quality_gate,failed,critical,1,0,Resolve failed validation checks or explicitly quarantine affected datasets.
+2026-07-12T16:54:37.507662+00:00,blocked,do_not_publish,critical_alert_gate,failed,critical,4,0,Resolve critical open alerts before certifying a release.
+2026-07-12T16:54:37.507662+00:00,blocked,do_not_publish,slo_gate,failed,critical,1,0,Restore failed SLOs or mark the release as intentionally degraded.
+2026-07-12T16:54:37.507662+00:00,blocked,do_not_publish,data_product_certification_gate,failed,critical,blocked,passed,Clear blocked data products or publish with executive exception.
+2026-07-12T16:54:37.507662+00:00,blocked,do_not_publish,semantic_metric_gate,passed,high,passed,passed,Fix semantic metric references before exposing certified measures.
+2026-07-12T16:54:37.507662+00:00,blocked,do_not_publish,reconciliation_gate,passed,critical,passed,passed,Resolve revenue/order reconciliation differences before release.
+2026-07-12T16:54:37.507662+00:00,blocked,do_not_publish,pii_classification_gate,passed,critical,passed,passed,Update classification metadata or remove unexpected PII exposure.
+2026-07-12T16:54:37.507662+00:00,blocked,do_not_publish,catalog_completeness_gate,passed,high,passed,passed,Complete required catalog fields and missing gold entries.
+2026-07-12T16:54:37.507662+00:00,blocked,do_not_publish,dataset_trust_gate,failed,critical,"{""blocked_or_at_risk"": [""gold_data_quality_summary""], ""monitor"": []}",all gold datasets Trusted or explicitly reviewed,Resolve trust score reason codes or publish with a documented data owner exception.
+2026-07-12T16:54:37.507662+00:00,blocked,do_not_publish,runtime_gate,passed,medium,0.1209,<= 60 seconds local smoke run,Investigate slow pipeline phases in runtime profile.
+2026-07-12T16:54:37.507662+00:00,blocked,do_not_publish,lineage_graph_gate,passed,high,"{""edges"": 53, ""nodes"": 36}",nodes and edges present,Regenerate lineage events and graph before release.
+2026-07-12T16:54:37.507662+00:00,blocked,do_not_publish,high_alert_gate,warning,medium,3,0,Review high-severity alerts before release.

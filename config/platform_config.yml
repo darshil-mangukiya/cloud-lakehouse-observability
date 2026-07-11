@@ -1,0 +1,121 @@
+platform:
+  name: p5-cloud-lakehouse-observability
+  environment: local
+  lakehouse_bucket: lakehouse
+  state_database: metadata/platform_state.sqlite
+  default_timezone: UTC
+
+storage:
+  minio_endpoint: http://minio:9000
+  raw_prefix: raw/bronze
+  silver_prefix: silver/clean
+  gold_prefix: gold/marts
+  partition_format: source_system={source_system}/ingest_date={ingest_date}/batch_id={batch_id}
+
+metadata:
+  catalog_owner: data-platform
+  catalog_refresh_frequency: daily
+  criticality_tiers:
+    tier_1: executive reporting, revenue, customer, and operational readiness datasets
+    tier_2: campaign, product, and support analytics
+    tier_3: exploratory or non-critical enrichment datasets
+
+schema_contracts:
+  ecommerce_transactions:
+    primary_key: transaction_id
+    allowed_renames:
+      order_id: transaction_id
+      order_value: amount
+      order_timestamp: order_ts
+    required_columns:
+      - transaction_id
+      - customer_id
+      - product_id
+      - order_ts
+      - amount
+      - status
+    additive_columns_allowed: true
+  marketing_campaigns:
+    primary_key: campaign_id
+    allowed_renames:
+      spend_usd: spend
+      channel_name: channel
+    required_columns:
+      - campaign_id
+      - campaign_date
+      - channel
+      - spend
+  customer_behavior:
+    primary_key: event_id
+    allowed_renames:
+      user_id: customer_id
+      event_time: event_ts
+    required_columns:
+      - event_id
+      - customer_id
+      - event_ts
+      - event_type
+  product_catalog:
+    primary_key: product_id
+    required_columns:
+      - product_id
+      - product_name
+      - category
+      - active_flag
+  operational_logs:
+    primary_key: log_id
+    required_columns:
+      - log_id
+      - service_name
+      - event_ts
+      - status
+  targets_planning:
+    primary_key: target_date
+    required_columns:
+      - target_date
+      - revenue_target
+      - orders_target
+  crm_support:
+    primary_key: ticket_id
+    allowed_renames:
+      user_id: customer_id
+    required_columns:
+      - ticket_id
+      - customer_id
+      - created_ts
+      - priority
+      - status
+
+quality_thresholds:
+  max_duplicate_rate: 0.02
+  max_null_rate_default: 0.10
+  freshness_sla_hours:
+    ecommerce_transactions: 24
+    marketing_campaigns: 24
+    customer_behavior: 6
+    product_catalog: 48
+    operational_logs: 1
+    targets_planning: 168
+    crm_support: 24
+  accepted_values:
+    ecommerce_transactions.status:
+      - completed
+      - refunded
+      - failed
+      - pending
+    operational_logs.status:
+      - ok
+      - warning
+      - failed
+    crm_support.priority:
+      - low
+      - medium
+      - high
+      - urgent
+
+observability:
+  row_count_baseline_window: 7
+  row_count_delta_warn_pct: 0.35
+  row_count_delta_critical_pct: 0.60
+  readiness_pass_threshold: 0.95
+  alert_sink: alerts/alert_log.jsonl

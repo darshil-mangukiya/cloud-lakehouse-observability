@@ -1,0 +1,9 @@
+dataset_name,row_count,trust_score_overall,trust_score_band,readiness_status,quality_status,freshness_status,schema_status
+gold_customer_analytics,5,100.0,Trusted,ready,passed,passed,compatible_evolution
+gold_data_quality_summary,7,73.9,At Risk,at_risk,failed,passed,compatible_evolution
+gold_marketing_attribution,4,100.0,Trusted,ready,passed,passed,compatible_evolution
+gold_operational_metrics,4,100.0,Trusted,ready,passed,passed,compatible_evolution
+gold_product_performance,5,100.0,Trusted,ready,passed,passed,compatible_evolution
+gold_revenue_analytics,2,100.0,Trusted,ready,passed,passed,compatible_evolution
+gold_source_freshness,15,100.0,Trusted,ready,passed,passed,compatible_evolution
+gold_target_vs_actual,2,100.0,Trusted,ready,passed,passed,compatible_evolution

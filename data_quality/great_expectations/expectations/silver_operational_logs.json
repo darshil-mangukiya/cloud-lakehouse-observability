@@ -1,0 +1,9 @@
+{
+  "expectation_suite_name": "silver_operational_logs",
+  "expectations": [
+    {"expectation_type": "expect_column_values_to_not_be_null", "kwargs": {"column": "log_id"}},
+    {"expectation_type": "expect_column_values_to_be_unique", "kwargs": {"column": "log_id"}},
+    {"expectation_type": "expect_column_values_to_be_in_set", "kwargs": {"column": "status", "value_set": ["ok", "warning", "failed"]}},
+    {"expectation_type": "expect_column_values_to_be_between", "kwargs": {"column": "runtime_seconds", "min_value": 0}}
+  ]
+}

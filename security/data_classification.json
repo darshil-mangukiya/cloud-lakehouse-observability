@@ -1,0 +1,37 @@
+{
+  "silver_ecommerce_transactions": {
+    "classification": "confidential",
+    "pii_columns": ["customer_id"],
+    "sensitive_columns": ["amount", "campaign_id"],
+    "retention_policy": "retain_7_years_for_finance_audit",
+    "access_policy": "finance_analytics_and_data_platform"
+  },
+  "silver_customer_behavior": {
+    "classification": "confidential",
+    "pii_columns": ["customer_id", "session_id"],
+    "sensitive_columns": ["event_type", "product_id"],
+    "retention_policy": "retain_25_months_for_product_analytics",
+    "access_policy": "product_analytics_and_data_platform"
+  },
+  "silver_crm_support": {
+    "classification": "restricted",
+    "pii_columns": ["customer_id", "ticket_id"],
+    "sensitive_columns": ["priority", "topic", "status"],
+    "retention_policy": "retain_3_years_for_customer_support",
+    "access_policy": "support_operations_and_data_governance"
+  },
+  "gold_revenue_analytics": {
+    "classification": "confidential",
+    "pii_columns": [],
+    "sensitive_columns": ["gross_revenue", "revenue_target"],
+    "retention_policy": "retain_7_years_for_finance_audit",
+    "access_policy": "executive_reporting_and_finance"
+  },
+  "gold_customer_analytics": {
+    "classification": "restricted",
+    "pii_columns": ["customer_id"],
+    "sensitive_columns": ["gross_revenue", "support_tickets", "customer_segment"],
+    "retention_policy": "retain_3_years_for_customer_analytics",
+    "access_policy": "analytics_engineering_and_authorized_business_users"
+  }
+}

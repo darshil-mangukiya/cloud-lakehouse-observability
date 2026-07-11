@@ -1,0 +1,6 @@
+product_id,product_name,category,active_flag,list_price
+P100,Usage Analytics Pro,SaaS,true,129.50
+P200,Retention Insights,SaaS,true,59.99
+P300,Legacy Dashboard Add-on,SaaS,false,29.99
+P400,Enterprise Automation Pack,SaaS,true,249.99
+P500,Premium Implementation Service,Services,true,399.00

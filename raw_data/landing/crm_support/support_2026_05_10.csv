@@ -1,0 +1,4 @@
+ticket_id,user_id,created_ts,priority,status,topic
+S5001,C001,2026-05-10T10:01:00Z,high,open,billing
+S5002,C004,2026-05-10T10:22:00Z,medium,pending,onboarding
+S5003,C005,2026-05-10T11:05:00Z,urgent,open,implementation

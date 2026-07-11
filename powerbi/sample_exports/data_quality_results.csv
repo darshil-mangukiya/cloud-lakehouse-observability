@@ -1,0 +1,31 @@
+dataset_name,validated_at,row_count,check_name,rule_type,status,severity,observed_value,threshold,failed_records
+silver_crm_support,2026-07-12T16:54:37.405311+00:00,3,schema_required_columns,schema,passed,critical,,ticket_id;customer_id;created_ts;priority;status,0
+silver_crm_support,2026-07-12T16:54:37.405311+00:00,3,unique_ticket_id,uniqueness,passed,critical,0,0,0
+silver_crm_support,2026-07-12T16:54:37.405311+00:00,3,accepted_values_priority,accepted_values,passed,medium,,low;medium;high;urgent,0
+silver_customer_behavior,2026-07-12T16:54:37.404621+00:00,4,schema_required_columns,schema,passed,critical,,event_id;customer_id;event_ts;event_type,0
+silver_customer_behavior,2026-07-12T16:54:37.404621+00:00,4,unique_event_id,uniqueness,passed,critical,0,0,0
+silver_customer_behavior,2026-07-12T16:54:37.404621+00:00,4,null_rate_event_id,null,passed,high,0.0,0.0,0
+silver_customer_behavior,2026-07-12T16:54:37.404621+00:00,4,null_rate_customer_id,null,passed,high,0.0,0.05,0
+silver_ecommerce_transactions,2026-07-12T16:54:37.403622+00:00,8,schema_required_columns,schema,passed,critical,,transaction_id;customer_id;product_id;order_ts;amount;status,0
+silver_ecommerce_transactions,2026-07-12T16:54:37.403622+00:00,8,unique_transaction_id,uniqueness,passed,critical,0,0,0
+silver_ecommerce_transactions,2026-07-12T16:54:37.403622+00:00,8,null_rate_transaction_id,null,passed,high,0.0,0.0,0
+silver_ecommerce_transactions,2026-07-12T16:54:37.403622+00:00,8,null_rate_customer_id,null,failed,high,0.125,0.01,1
+silver_ecommerce_transactions,2026-07-12T16:54:37.403622+00:00,8,null_rate_amount,null,passed,high,0.0,0.02,0
+silver_ecommerce_transactions,2026-07-12T16:54:37.403622+00:00,8,accepted_values_status,accepted_values,passed,medium,,completed;refunded;failed;pending,0
+silver_ecommerce_transactions,2026-07-12T16:54:37.403622+00:00,8,non_negative_amount,range,passed,high,0,>= 0,0
+silver_marketing_campaigns,2026-07-12T16:54:37.404304+00:00,4,schema_required_columns,schema,passed,critical,,campaign_id;campaign_date;channel;spend,0
+silver_marketing_campaigns,2026-07-12T16:54:37.404304+00:00,4,unique_campaign_id,uniqueness,passed,critical,0,0,0
+silver_marketing_campaigns,2026-07-12T16:54:37.404304+00:00,4,null_rate_campaign_id,null,passed,high,0.0,0.0,0
+silver_marketing_campaigns,2026-07-12T16:54:37.404304+00:00,4,null_rate_spend,null,passed,high,0.0,0.05,0
+silver_marketing_campaigns,2026-07-12T16:54:37.404304+00:00,4,non_negative_spend,range,passed,high,0,>= 0,0
+silver_operational_logs,2026-07-12T16:54:37.404971+00:00,4,schema_required_columns,schema,passed,critical,,log_id;service_name;event_ts;status,0
+silver_operational_logs,2026-07-12T16:54:37.404971+00:00,4,unique_log_id,uniqueness,passed,critical,0,0,0
+silver_operational_logs,2026-07-12T16:54:37.404971+00:00,4,accepted_values_status,accepted_values,passed,medium,,ok;warning;failed,0
+silver_product_catalog,2026-07-12T16:54:37.404816+00:00,5,schema_required_columns,schema,passed,critical,,product_id;product_name;category;active_flag,0
+silver_product_catalog,2026-07-12T16:54:37.404816+00:00,5,unique_product_id,uniqueness,passed,critical,0,0,0
+silver_product_catalog,2026-07-12T16:54:37.404816+00:00,5,null_rate_product_id,null,passed,high,0.0,0.0,0
+silver_product_catalog,2026-07-12T16:54:37.404816+00:00,5,null_rate_category,null,passed,high,0.0,0.02,0
+silver_targets_planning,2026-07-12T16:54:37.405112+00:00,2,schema_required_columns,schema,passed,critical,,target_date;revenue_target;orders_target,0
+silver_targets_planning,2026-07-12T16:54:37.405112+00:00,2,unique_target_date,uniqueness,passed,critical,0,0,0
+silver_targets_planning,2026-07-12T16:54:37.405112+00:00,2,non_negative_revenue_target,range,passed,high,0,>= 0,0
+silver_targets_planning,2026-07-12T16:54:37.405112+00:00,2,non_negative_orders_target,range,passed,high,0,>= 0,0

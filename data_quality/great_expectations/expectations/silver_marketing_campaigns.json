@@ -1,0 +1,9 @@
+{
+  "expectation_suite_name": "silver_marketing_campaigns",
+  "expectations": [
+    {"expectation_type": "expect_column_values_to_not_be_null", "kwargs": {"column": "campaign_id"}},
+    {"expectation_type": "expect_column_values_to_be_unique", "kwargs": {"column": "campaign_id"}},
+    {"expectation_type": "expect_column_values_to_be_between", "kwargs": {"column": "spend", "min_value": 0}},
+    {"expectation_type": "expect_column_values_to_be_between", "kwargs": {"column": "clicks", "min_value": 0}}
+  ]
+}

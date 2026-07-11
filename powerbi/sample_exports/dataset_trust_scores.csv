@@ -1,0 +1,9 @@
+dataset_name,trust_score_overall,trust_score_band,recommended_action,reason_codes,comp_readiness,comp_quality,comp_freshness,comp_schema_stability,comp_slo_compliance,comp_volume_anomaly,comp_lineage_completeness,comp_documentation_completeness,comp_incident_history
+gold_customer_analytics,100.0,Trusted,Publish as certified reporting input and monitor normal SLOs.,,100.0,100,100,100,100,100,100,100,100
+gold_revenue_analytics,100.0,Trusted,Publish as certified reporting input and monitor normal SLOs.,,100.0,100,100,100,100,100,100,100,100
+gold_marketing_attribution,100.0,Trusted,Publish as certified reporting input and monitor normal SLOs.,,100.0,100,100,100,100,100,100,100,100
+gold_product_performance,100.0,Trusted,Publish as certified reporting input and monitor normal SLOs.,,100.0,100,100,100,100,100,100,100,100
+gold_operational_metrics,100.0,Trusted,Publish as certified reporting input and monitor normal SLOs.,,100.0,100,100,100,100,100,100,100,100
+gold_target_vs_actual,100.0,Trusted,Publish as certified reporting input and monitor normal SLOs.,,100.0,100,100,100,100,100,100,100,100
+gold_data_quality_summary,73.9,At Risk,Block publication until critical alerts are resolved and the release gate is re-run.,critical_open_alert;failed_quality_gate;freshness_or_slo_risk,75.0,25,100,100,55,100,100,100,30
+gold_source_freshness,100.0,Trusted,Publish as certified reporting input and monitor normal SLOs.,,100.0,100,100,100,100,100,100,100,100

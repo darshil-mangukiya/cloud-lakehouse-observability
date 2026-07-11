@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: stg_ecommerce_transactions
+    description: Standardized ecommerce transactions with safe schema evolution aliases.
+    columns:
+      - name: transaction_id
+        tests: [not_null, unique]
+      - name: customer_id
+        tests: [not_null]
+      - name: amount
+        tests: [not_null]
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['completed', 'refunded', 'failed', 'pending']
+  - name: stg_marketing_campaigns
+    columns:
+      - name: campaign_id
+        tests: [not_null, unique]
+      - name: spend
+        tests: [not_null]
+  - name: stg_product_catalog
+    columns:
+      - name: product_id
+        tests: [not_null, unique]
+  - name: gold_revenue_analytics
+    description: Trusted daily revenue mart for finance and executive reporting.
+    columns:
+      - name: order_date
+        tests: [not_null, unique]
+      - name: gross_revenue
+        tests: [not_null]
+  - name: gold_customer_analytics
+    description: Customer health and value mart for retention analytics.
+    columns:
+      - name: customer_id
+        tests: [not_null, unique]
+  - name: dim_customer
+    description: Lightweight customer dimension view derived from gold customer analytics.
+    columns:
+      - name: customer_id
+        tests: [not_null, unique]
+  - name: dim_product
+    description: Lightweight product dimension view derived from standardized product catalog.
+    columns:
+      - name: product_id
+        tests: [not_null, unique]
+  - name: fact_orders
+    description: Order-level fact view from standardized ecommerce transactions.
+    columns:
+      - name: transaction_id
+        tests: [not_null, unique]
+  - name: fact_marketing_spend
+    description: Campaign spend fact view from standardized marketing campaign extracts.
+    columns:
+      - name: campaign_id
+        tests: [not_null, unique]

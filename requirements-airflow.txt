@@ -1,0 +1,6 @@
+apache-airflow==2.9.3
+apache-airflow-providers-postgres>=5.11.0
+apache-airflow-providers-amazon>=8.25.0
+pandas>=2.2.0
+great_expectations>=0.18.0,<1.0.0
+dbt-postgres>=1.8.0,<2.0.0

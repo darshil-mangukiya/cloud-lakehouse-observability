@@ -1,0 +1,345 @@
+{
+  "ecommerce_transactions": {
+    "source_system": "ecommerce_transactions",
+    "dataset_name": "orders",
+    "owner": "data-platform",
+    "business_domain": "revenue",
+    "business_criticality": "critical",
+    "criticality_tier": "tier_1",
+    "primary_key": "transaction_id",
+    "expected_schema": {
+      "transaction_id": "string",
+      "customer_id": "string",
+      "product_id": "string",
+      "order_ts": "timestamp",
+      "amount": "decimal",
+      "status": "string",
+      "quantity": "integer",
+      "campaign_id": "string",
+      "coupon_code": "string"
+    },
+    "required_columns": ["transaction_id", "customer_id", "product_id", "order_ts", "amount", "status"],
+    "optional_columns": ["quantity", "campaign_id", "coupon_code"],
+    "accepted_data_types": {
+      "transaction_id": "string",
+      "customer_id": "string",
+      "product_id": "string",
+      "order_ts": "timestamp",
+      "amount": "decimal",
+      "status": "string",
+      "quantity": "integer",
+      "campaign_id": "string",
+      "coupon_code": "string"
+    },
+    "allowed_renames": {
+      "order_id": "transaction_id",
+      "order_value": "amount",
+      "order_timestamp": "order_ts"
+    },
+    "null_thresholds": {
+      "transaction_id": 0.0,
+      "customer_id": 0.05,
+      "product_id": 0.0,
+      "order_ts": 0.0,
+      "amount": 0.0,
+      "status": 0.0
+    },
+    "uniqueness_rules": ["transaction_id"],
+    "accepted_values": {
+      "status": ["completed", "refunded", "failed", "pending"]
+    },
+    "freshness_sla_minutes": 1440,
+    "freshness_sla_hours": 24,
+    "schema_compatibility_mode": "backward_compatible",
+    "breaking_change_rules": ["missing_required_column", "type_narrowing", "primary_key_duplicate", "primary_key_null"],
+    "non_breaking_change_rules": ["optional_column_added", "approved_rename", "nullable_optional_column"],
+    "breaking_change_policy": "quarantine_or_contract_update_required",
+    "quarantine_on_failure": true,
+    "downstream_dependencies": [
+      "gold_customer_analytics",
+      "gold_revenue_analytics",
+      "gold_marketing_attribution",
+      "gold_product_performance",
+      "gold_target_vs_actual"
+    ],
+    "downstream_gold_datasets": [
+      "gold_customer_analytics",
+      "gold_revenue_analytics",
+      "gold_marketing_attribution",
+      "gold_product_performance",
+      "gold_target_vs_actual"
+    ]
+  },
+  "marketing_campaigns": {
+    "source_system": "marketing_campaigns",
+    "dataset_name": "campaign_spend",
+    "owner": "growth-analytics",
+    "business_domain": "marketing",
+    "business_criticality": "high",
+    "criticality_tier": "tier_2",
+    "primary_key": "campaign_id",
+    "expected_schema": {
+      "campaign_id": "string",
+      "campaign_date": "date",
+      "channel": "string",
+      "spend": "decimal",
+      "impressions": "integer",
+      "clicks": "integer"
+    },
+    "required_columns": ["campaign_id", "campaign_date", "channel", "spend"],
+    "optional_columns": ["impressions", "clicks"],
+    "accepted_data_types": {
+      "campaign_id": "string",
+      "campaign_date": "date",
+      "channel": "string",
+      "spend": "decimal",
+      "impressions": "integer",
+      "clicks": "integer"
+    },
+    "allowed_renames": {
+      "spend_usd": "spend",
+      "channel_name": "channel"
+    },
+    "null_thresholds": {
+      "campaign_id": 0.0,
+      "campaign_date": 0.0,
+      "channel": 0.0,
+      "spend": 0.0
+    },
+    "uniqueness_rules": ["campaign_id"],
+    "accepted_values": {},
+    "freshness_sla_minutes": 1440,
+    "freshness_sla_hours": 24,
+    "schema_compatibility_mode": "backward_compatible",
+    "breaking_change_rules": ["missing_required_column", "type_narrowing", "primary_key_duplicate"],
+    "non_breaking_change_rules": ["optional_column_added", "approved_rename"],
+    "breaking_change_policy": "warn_and_route_to_growth_owner",
+    "quarantine_on_failure": false,
+    "downstream_dependencies": ["gold_marketing_attribution"],
+    "downstream_gold_datasets": ["gold_marketing_attribution"]
+  },
+  "customer_behavior": {
+    "source_system": "customer_behavior",
+    "dataset_name": "behavior_events",
+    "owner": "product-analytics",
+    "business_domain": "product",
+    "business_criticality": "high",
+    "criticality_tier": "tier_2",
+    "primary_key": "event_id",
+    "expected_schema": {
+      "event_id": "string",
+      "customer_id": "string",
+      "event_ts": "timestamp",
+      "event_type": "string",
+      "product_id": "string",
+      "session_id": "string"
+    },
+    "required_columns": ["event_id", "customer_id", "event_ts", "event_type"],
+    "optional_columns": ["product_id", "session_id"],
+    "accepted_data_types": {
+      "event_id": "string",
+      "customer_id": "string",
+      "event_ts": "timestamp",
+      "event_type": "string",
+      "product_id": "string",
+      "session_id": "string"
+    },
+    "allowed_renames": {
+      "user_id": "customer_id",
+      "event_time": "event_ts"
+    },
+    "null_thresholds": {
+      "event_id": 0.0,
+      "customer_id": 0.02,
+      "event_ts": 0.0,
+      "event_type": 0.0
+    },
+    "uniqueness_rules": ["event_id"],
+    "accepted_values": {},
+    "freshness_sla_minutes": 360,
+    "freshness_sla_hours": 6,
+    "schema_compatibility_mode": "backward_compatible",
+    "breaking_change_rules": ["missing_required_column", "type_narrowing", "primary_key_duplicate"],
+    "non_breaking_change_rules": ["optional_column_added", "approved_rename"],
+    "breaking_change_policy": "quarantine_breaking_event_payloads",
+    "quarantine_on_failure": true,
+    "downstream_dependencies": ["gold_customer_analytics"],
+    "downstream_gold_datasets": ["gold_customer_analytics"]
+  },
+  "product_catalog": {
+    "source_system": "product_catalog",
+    "dataset_name": "products",
+    "owner": "merchandising-analytics",
+    "business_domain": "merchandising",
+    "business_criticality": "high",
+    "criticality_tier": "tier_2",
+    "primary_key": "product_id",
+    "expected_schema": {
+      "product_id": "string",
+      "product_name": "string",
+      "category": "string",
+      "active_flag": "boolean",
+      "list_price": "decimal"
+    },
+    "required_columns": ["product_id", "product_name", "category", "active_flag"],
+    "optional_columns": ["list_price"],
+    "accepted_data_types": {
+      "product_id": "string",
+      "product_name": "string",
+      "category": "string",
+      "active_flag": "boolean",
+      "list_price": "decimal"
+    },
+    "allowed_renames": {},
+    "null_thresholds": {
+      "product_id": 0.0,
+      "product_name": 0.0,
+      "category": 0.0,
+      "active_flag": 0.0
+    },
+    "uniqueness_rules": ["product_id"],
+    "accepted_values": {},
+    "freshness_sla_minutes": 2880,
+    "freshness_sla_hours": 48,
+    "schema_compatibility_mode": "backward_compatible",
+    "breaking_change_rules": ["missing_required_column", "type_narrowing", "primary_key_duplicate"],
+    "non_breaking_change_rules": ["optional_column_added"],
+    "breaking_change_policy": "block_product_mart_publication",
+    "quarantine_on_failure": false,
+    "downstream_dependencies": ["gold_product_performance"],
+    "downstream_gold_datasets": ["gold_product_performance"]
+  },
+  "operational_logs": {
+    "source_system": "operational_logs",
+    "dataset_name": "pipeline_service_logs",
+    "owner": "data-platform",
+    "business_domain": "platform_operations",
+    "business_criticality": "critical",
+    "criticality_tier": "tier_1",
+    "primary_key": "log_id",
+    "expected_schema": {
+      "log_id": "string",
+      "service_name": "string",
+      "event_ts": "timestamp",
+      "status": "string",
+      "runtime_seconds": "integer"
+    },
+    "required_columns": ["log_id", "service_name", "event_ts", "status"],
+    "optional_columns": ["runtime_seconds"],
+    "accepted_data_types": {
+      "log_id": "string",
+      "service_name": "string",
+      "event_ts": "timestamp",
+      "status": "string",
+      "runtime_seconds": "integer"
+    },
+    "allowed_renames": {},
+    "null_thresholds": {
+      "log_id": 0.0,
+      "service_name": 0.0,
+      "event_ts": 0.0,
+      "status": 0.0
+    },
+    "uniqueness_rules": ["log_id"],
+    "accepted_values": {
+      "status": ["ok", "warning", "failed"]
+    },
+    "freshness_sla_minutes": 60,
+    "freshness_sla_hours": 1,
+    "schema_compatibility_mode": "backward_compatible",
+    "breaking_change_rules": ["missing_required_column", "type_narrowing", "primary_key_duplicate"],
+    "non_breaking_change_rules": ["optional_column_added"],
+    "breaking_change_policy": "page_data_platform_on_breaking_change",
+    "quarantine_on_failure": true,
+    "downstream_dependencies": ["gold_operational_metrics"],
+    "downstream_gold_datasets": ["gold_operational_metrics"]
+  },
+  "targets_planning": {
+    "source_system": "targets_planning",
+    "dataset_name": "revenue_targets",
+    "owner": "finance-analytics",
+    "business_domain": "finance",
+    "business_criticality": "critical",
+    "criticality_tier": "tier_1",
+    "primary_key": "target_date",
+    "expected_schema": {
+      "target_date": "date",
+      "revenue_target": "decimal",
+      "orders_target": "integer"
+    },
+    "required_columns": ["target_date", "revenue_target", "orders_target"],
+    "optional_columns": [],
+    "accepted_data_types": {
+      "target_date": "date",
+      "revenue_target": "decimal",
+      "orders_target": "integer"
+    },
+    "allowed_renames": {},
+    "null_thresholds": {
+      "target_date": 0.0,
+      "revenue_target": 0.0,
+      "orders_target": 0.0
+    },
+    "uniqueness_rules": ["target_date"],
+    "accepted_values": {},
+    "freshness_sla_minutes": 10080,
+    "freshness_sla_hours": 168,
+    "schema_compatibility_mode": "backward_compatible",
+    "breaking_change_rules": ["missing_required_column", "type_narrowing", "primary_key_duplicate"],
+    "non_breaking_change_rules": [],
+    "breaking_change_policy": "manual_finance_signoff_required",
+    "quarantine_on_failure": false,
+    "downstream_dependencies": ["gold_revenue_analytics", "gold_target_vs_actual"],
+    "downstream_gold_datasets": ["gold_revenue_analytics", "gold_target_vs_actual"]
+  },
+  "crm_support": {
+    "source_system": "crm_support",
+    "dataset_name": "support_tickets",
+    "owner": "support-operations",
+    "business_domain": "support",
+    "business_criticality": "medium",
+    "criticality_tier": "tier_2",
+    "primary_key": "ticket_id",
+    "expected_schema": {
+      "ticket_id": "string",
+      "customer_id": "string",
+      "created_ts": "timestamp",
+      "priority": "string",
+      "status": "string",
+      "topic": "string"
+    },
+    "required_columns": ["ticket_id", "customer_id", "created_ts", "priority", "status"],
+    "optional_columns": ["topic"],
+    "accepted_data_types": {
+      "ticket_id": "string",
+      "customer_id": "string",
+      "created_ts": "timestamp",
+      "priority": "string",
+      "status": "string",
+      "topic": "string"
+    },
+    "allowed_renames": {
+      "user_id": "customer_id"
+    },
+    "null_thresholds": {
+      "ticket_id": 0.0,
+      "customer_id": 0.05,
+      "created_ts": 0.0,
+      "priority": 0.0,
+      "status": 0.0
+    },
+    "uniqueness_rules": ["ticket_id"],
+    "accepted_values": {
+      "priority": ["low", "medium", "high", "urgent"]
+    },
+    "freshness_sla_minutes": 1440,
+    "freshness_sla_hours": 24,
+    "schema_compatibility_mode": "backward_compatible",
+    "breaking_change_rules": ["missing_required_column", "type_narrowing", "primary_key_duplicate"],
+    "non_breaking_change_rules": ["optional_column_added", "approved_rename"],
+    "breaking_change_policy": "warn_and_route_to_support_ops",
+    "quarantine_on_failure": false,
+    "downstream_dependencies": ["gold_customer_analytics"],
+    "downstream_gold_datasets": ["gold_customer_analytics"]
+  }
+}
