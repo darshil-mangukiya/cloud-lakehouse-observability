@@ -1,6 +1,6 @@
 # Cloud Data Lakehouse & Data Observability Platform
 
-[![CI](https://github.com/darshil-mangukiya/p5-cloud-lakehouse-observability/actions/workflows/local-ci.yml/badge.svg)](https://github.com/darshil-mangukiya/p5-cloud-lakehouse-observability/actions/workflows/local-ci.yml)
+[![CI](https://github.com/darshil-mangukiya/cloud-lakehouse-observability/actions/workflows/local-ci.yml/badge.svg)](https://github.com/darshil-mangukiya/cloud-lakehouse-observability/actions/workflows/local-ci.yml)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-local%20warehouse-336791)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED)
@@ -93,7 +93,7 @@ PostgreSQL acts as the local control plane for metadata, alerts, schema state, o
 ## Repository Structure
 
 ```text
-p5-cloud-lakehouse-observability/
+cloud-lakehouse-observability/
   ingestion/          # ingestion, profiling, contracts, schema registry
   ingestion/api_sources/ # simulated paginated API ingestion example
   lakehouse/          # partitioned Parquet storage helpers
